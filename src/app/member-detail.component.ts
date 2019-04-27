@@ -9,7 +9,7 @@ import { MemberService } from './member.service';
 @Component({
   selector: 'member-detail', // <member-detail [member]="selectedMember"></member-detail>
   templateUrl: './member-detail.component.html',
-  styleUrls:  ['./member-detail.component.css']
+  styleUrls: ['./member-detail.component.css']
 })
 export class MemberDetailComponent implements OnInit {
   member: Member;
@@ -30,5 +30,10 @@ export class MemberDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    this.memberService.update(this.member)
+      .then(() => this.goBack());
   }
 }
